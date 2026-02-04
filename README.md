@@ -1,19 +1,12 @@
-Pasos
+Pasos para levantar el proyecto
 
 Clonar el repositorio
-
-Configurar las variables de entorno (ver sección siguiente)
-
+Configurar las variables de entorno
 Ejecutar el proyecto:
 
 ./gradlew bootRun
 
-
-O desde IntelliJ:
-Ejecutar InventoryConfigServiceApplication.kt
-
-El servicio se levantará por defecto en:
-
+El servicio se levanta por defecto en el puerto:
 http://localhost:8080
 Variables de entorno necesarias
 
@@ -53,7 +46,7 @@ Ejemplo de request:
 GET /api/rules
 Authorization: Bearer <JWT>
 
-3️⃣ Endpoints solo ADMIN
+Endpoints solo ADMIN
 
 Requieren:
 
@@ -78,26 +71,19 @@ Content-Type: application/json
   "isActive": true
 }
 
-🧾 Auditoría de cambios
+Auditoría de cambios
 
 Todas las operaciones que modifican datos realizan auditoría automática:
-
 Crear
-
 Actualizar
-
 Activar / desactivar
-
 (Opcional) Eliminar
-
 Campo auditado
-
 updatedBy: se obtiene del token JWT
-
 Si el token no contiene el userId, la operación falla con una custom exception controlada.
 
-🏷️ Claims utilizados del JWT
-🔹 Usuario autenticado (auditoría)
+Claims utilizados del JWT
+Usuario autenticado (auditoría)
 
 Claim usado: sub
 
@@ -105,7 +91,7 @@ Uso: se guarda en el campo updatedBy
 
 jwt.claims["sub"]
 
-🔹 Rol ADMIN
+Rol ADMIN
 
 Claim usado: cognito:groups
 
@@ -119,8 +105,7 @@ ROLE_ADMIN
 Ejemplo de configuración en Cognito:
 
 cognito:groups = ["ADMIN"]
-
-⚠️ Manejo de errores
+Manejo de errores
 
 El microservicio cuenta con un Global Exception Handler que retorna errores JSON consistentes:
 
