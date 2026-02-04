@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://us-east-28bqfrio1j.auth.us-east-2.amazoncognito.com
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
